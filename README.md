@@ -26,42 +26,43 @@ Este padrão está implementado no bloco condicional ao final do spider, permiti
 
 ```python
 if self.page_count < self.max_page:
-    # Construir a URL da próxima página com base no padrão identificado
+    # Verificamos se o contador de páginas está abaixo do limite máximo definido (10 páginas)
     if self.page_count == 1:
-        # Para a segunda página (após a primeira)
+        # Tratamento especial para a segunda página (depois da primeira)
+        # A segunda página sempre usa um offset fixo de 49 produtos
         next_page = "https://lista.mercadolivre.com.br/informatica/portateis-acessorios/notebooks/notebook_Desde_49_NoIndex_True"
     else:
-        # Para as páginas subsequentes
+        # Para as páginas subsequentes (terceira em diante)
+        # Calculamos o offset com base em uma fórmula identificada no padrão do site:
+        # - Primeira página: sem offset
+        # - Segunda página: offset de 49
+        # - Terceira página em diante: 49 + (número_da_página - 1) * 48
         next_offset = 49 + (self.page_count - 1) * 48
         next_page = f"https://lista.mercadolivre.com.br/informatica/portateis-acessorios/notebooks/notebook_Desde_{next_offset}_NoIndex_True"
     
+    # Incrementamos o contador de páginas para a próxima iteração
     self.page_count += 1
+    
+    # Criamos uma nova requisição para a próxima página e a adicionamos à fila do Scrapy
+    # O callback self.parse faz com que a mesma função seja chamada para processar os resultados
     yield scrapy.Request(url=next_page, callback=self.parse)
 ```
 
-Outro aspecto importante foi a extração de preços. O Mercado Livre frequentemente exibe dois valores para cada produto: o preço original (riscado) e o preço promocional. Para capturar esses valores, implementei a seguinte lógica:
+Este sistema funciona porque:
+1. Inicializamos `page_count = 1` e `max_page = 10` no início da classe
+2. A condição `if self.page_count < self.max_page` limita a coleta a no máximo 10 páginas
+3. Tratamos a primeira transição (página 1 → página 2) de forma especial, pois o Mercado Livre usa um offset fixo de 49
+4. Para as próximas páginas, calculamos o offset dinamicamente baseado no padrão descoberto
+5. Incrementamos o contador após cada página processada
+6. Usamos o `yield` para gerar uma nova requisição que será processada pelo Scrapy
+
+Outro aspecto importante foi a extração de preços. O Mercado Livre frequentemente exibe dois valores: o preço original (`old_money`) e o preço promocional (`new_money`). Extraí esses valores usando:
 
 ```python
 prices = product.css('span.andes-money-amount__fraction::text').getall()
+'old_money': prices[0] if len(prices) > 0 else None,
+'new_money': prices[1] if len(prices) > 1 else None
 ```
-
-O método `getall()` retorna uma lista com todos os elementos que correspondem ao seletor CSS especificado. No caso do Mercado Livre, este seletor captura os valores numéricos dos preços (sem o símbolo de moeda).
-
-A lista `prices` normalmente contém dois elementos:
-- `prices[0]`: O primeiro elemento representa o preço original (old_money) - aquele que aparece riscado na interface
-- `prices[1]`: O segundo elemento representa o preço promocional (new_money) - aquele que aparece como valor atual do produto
-
-Esses valores são então armazenados no dicionário de resultados:
-
-```python
-yield {
-    # outros campos...
-    'old_money': prices[0] if len(prices) > 0 else None,
-    'new_money': prices[1] if len(prices) > 1 else None
-}
-```
-
-Para garantir robustez, implementei verificações condicionais (`if len(prices) > 0` e `if len(prices) > 1`). Isso evita erros quando um produto não possui ambos os preços. Se o produto não tiver preço original riscado, por exemplo, ele terá apenas o `new_money` sem o `old_money`.
 
 ### Processo de Transform (Transformação)
 
@@ -100,11 +101,25 @@ conn = sqlite3.connect('data/meli.sql')
 df.to_sql('notebook', conn, if_exists='replace', index=False)
 ```
 
-Após o carregamento, realizei testes de conexão utilizando DBeaver, confirmando o sucesso da operação com uma simples consulta:
+#### Teste de Conexão com DBeaver
+
+Após o carregamento dos dados, realizei testes de conexão utilizando o DBeaver para verificar se o banco de dados foi criado corretamente e se a conexão poderia ser estabelecida.
+
+![Teste de Conexão com DBeaver](images/teste_conexao.png)
+*Figura 1: Configuração da conexão com o banco de dados SQLite no DBeaver.*
+
+#### Checagem dos Dados no DBeaver
+
+Para validar a integridade dos dados carregados, executei uma consulta simples no DBeaver:
 
 ```sql
 SELECT * FROM notebook
 ```
+
+Esta consulta retornou todos os registros da tabela, permitindo verificar se os dados foram corretamente carregados e estruturados.
+
+![Checagem dos Dados no DBeaver](images/checagem_dados.png)
+*Figura 2: Resultados da consulta SQL exibindo os dados coletados dos notebooks.*
 
 ### Dashboard com Streamlit
 
