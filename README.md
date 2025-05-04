@@ -1,4 +1,4 @@
-# MELI Notebook Market Research
+# WebScrapping com Python
 
 Um projeto completo de análise de mercado que coleta, processa e visualiza dados sobre notebooks no Mercado Livre Brasil.
 
