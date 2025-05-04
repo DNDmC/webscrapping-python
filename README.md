@@ -216,7 +216,7 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo LICENSE para d
 
 ## Autor
 
-Seu Nome - [seu-email@exemplo.com](mailto:filipi_98@hotmail.com)
+Filipe Albuquerque - [filipi_98@hotmail.com](mailto:filipi_98@hotmail.com)
 
 ---
 
