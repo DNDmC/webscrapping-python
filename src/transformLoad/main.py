@@ -26,8 +26,6 @@ df['old_money'] = df['old_money'].astype(str).str.replace('.', '', regex=False)
 df['new_money'] = df['new_money'].astype(str).str.replace('.', '', regex=False)
 df['reviews_amount'] = df['reviews_amount'].astype(str).str.replace('[\(\)]', '', regex=True)
 
-
-
 # Convertendo para números
 df['old_money'] = df['old_money'].astype(float)
 df['new_money'] = df['new_money'].astype(float)
@@ -42,9 +40,6 @@ df = df[
     (df['new_money'] >= 1000) & (df['new_money'] <= 10000)
 ]
 
-print(df)
-# Remover as colunas antigas de preços
-
 # Conectar ao banco de dados SQLite (ou criar um novo)
 conn = sqlite3.connect('data/meli.sql')
 
@@ -54,6 +49,5 @@ df.to_sql('notebook', conn, if_exists='replace', index=False)
 # Fechar conexão com o banco de dados
 conn.close()
 
-# Configurar pandas para mostrar todas as colunas 
-
 # Exibir o DataFrame resultante
+print(df)
