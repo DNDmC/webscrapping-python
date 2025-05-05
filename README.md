@@ -207,17 +207,17 @@ Abaixo está uma captura de tela do dashboard em funcionamento:
 
 ### Tabela: `notebook`
 
-| Campo | Tipo | Descrição | Analogia |
-|-------|------|-----------|----------|
-| `brand` | TEXT | Marca do notebook | Como o sobrenome de uma pessoa, identifica a "família" do produto |
-| `name` | TEXT | Nome/descrição do produto | Similar à biografia resumida de uma pessoa, contém os detalhes principais |
-| `seller` | TEXT | Nome do vendedor | Como o anfitrião de uma festa, é quem oferece o produto |
-| `reviews_rating_number` | FLOAT | Nota média das avaliações (0-5) | Semelhante à temperatura corporal, indica a "saúde" da reputação do produto |
-| `reviews_amount` | INTEGER | Quantidade de avaliações | Como o número de amigos no Facebook, indica popularidade |
-| `old_money` | FLOAT | Preço original (em R$) | Como o preço de tabela de um carro, é o valor sugerido |
-| `new_money` | FLOAT | Preço atual/promocional (em R$) | Como o preço negociado de um carro, é o valor real de venda |
-| `_source` | TEXT | URL de origem dos dados | Como o endereço residencial, indica de onde o produto veio |
-| `_datetime` | DATETIME | Data e hora da coleta | Como um carimbo de data em uma correspondência, registra quando a informação foi obtida |
+| Campo | Tipo | Descrição | Função |
+|-------|------|-----------|--------|
+| `brand` | TEXT | Marca do notebook | Permite agrupar e analisar produtos por fabricante |
+| `name` | TEXT | Nome/descrição do produto | Armazena as especificações técnicas e características do produto |
+| `seller` | TEXT | Nome do vendedor | Identifica o comerciante responsável pela oferta do produto |
+| `reviews_rating_number` | FLOAT | Nota média das avaliações (0-5) | Quantifica a satisfação dos clientes em uma escala padronizada |
+| `reviews_amount` | INTEGER | Quantidade de avaliações | Indica o volume de feedback e serve como métrica de confiabilidade da avaliação média |
+| `old_money` | FLOAT | Preço original (em R$) | Registra o valor de referência para cálculo de descontos |
+| `new_money` | FLOAT | Preço atual/promocional (em R$) | Armazena o valor efetivo de venda para comparações de preço |
+| `_source` | TEXT | URL de origem dos dados | Mantém a rastreabilidade da fonte dos dados para verificação e auditoria |
+| `_datetime` | DATETIME | Data e hora da coleta | Permite análises temporais e verificação de atualidade dos dados |
 
 ## Estrutura do Projeto
 
