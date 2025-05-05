@@ -18,7 +18,7 @@ Uma vez compreendido o desejo da empresa e o problema de negócio podemos prosse
 
 Este projeto é uma solução end-to-end de webscraping, seguindo o formato Extract, Transform e Load (ETL).
 
-### Processo de Extract (Extração)
+## Processo de Extract (Extração)
 
 Utilizei o framework Scrapy para webscraping. O spider `notebook.py` foi programado para navegar pela página de notebooks do Mercado Livre e extrair informações detalhadas.
 
