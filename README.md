@@ -1,16 +1,20 @@
-# MELI Notebook Market Research
+# WebScraping com Python
 
 Um projeto completo de análise de mercado que coleta, processa e visualiza dados sobre notebooks no Mercado Livre Brasil.
 
 ## Problema de Negócio
 
-A Samsung necessita de uma pesquisa de mercado aprofundada na categoria de notebooks para tomar decisões estratégicas. A empresa deseja:
+A Samsung necessita de uma pesquisa de mercado aprofundada na categoria de notebooks para tomar decisões estratégicas, como ela se compara aos concorrentes dentro de MarketPlaces, para esse feito ela decidiu que precisa coletar dados,
+meu papel é realizar uma coleta desses dados nesses sites, neste caso optei pelos dados do MarketPlace do MercadoLivre, como todo projeto, precisamos entender o que o cleinte deseja
+nesse caso A empresa deseja:
 
 * Realizar uma análise completa da concorrência de notebooks em marketplaces, especificamente no Mercado Livre
 * Coletar dados estruturados (Nome, Marca, Preço, Avaliações, Vendedor, etc.)
 * Desenvolver um sistema de WebScraping para obtenção automatizada dos dados
 * Armazenar as informações em um banco de dados SQL para consultas futuras
 * Criar um dashboard interativo para visualização e análise dos insights obtidos
+
+Uma vez compreendido o desejo da empresa e o problema de negócio podemos prosseguir com a explicação de todo o processo feito para conseguir tais informações.
 
 Este projeto é uma solução end-to-end de webscraping, seguindo o formato Extract, Transform e Load (ETL).
 
