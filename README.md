@@ -110,6 +110,7 @@ df.to_sql('notebook', conn, if_exists='replace', index=False)
 Após o carregamento dos dados, realizei testes de conexão utilizando o DBeaver para verificar se o banco de dados foi criado corretamente e se a conexão poderia ser estabelecida.
 
 ![Teste de Conexão com DBeaver](images/teste_conexao.png)
+
 *Figura 1: Configuração da conexão com o banco de dados SQLite no DBeaver.*
 
 #### Checagem dos Dados no DBeaver
@@ -123,6 +124,7 @@ SELECT * FROM notebook
 Esta consulta retornou todos os registros da tabela, permitindo verificar se os dados foram corretamente carregados e estruturados.
 
 ![Checagem dos Dados no DBeaver](images/checagem_dados.png)
+
 *Figura 2: Resultados da consulta SQL exibindo os dados coletados dos notebooks.*
 
 ### Dashboard com Streamlit
@@ -198,6 +200,7 @@ col2.write(satisfaction_by_brand)
 Abaixo está uma captura de tela do dashboard em funcionamento:
 
 ![Dashboard Streamlit](images/dashboard_streamlit.png)
+
 *Figura 3: Dashboard interativo criado com Streamlit mostrando os principais insights dos dados coletados.*
 
 ## Estrutura do Projeto
