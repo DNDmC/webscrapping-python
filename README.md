@@ -201,7 +201,23 @@ Abaixo está uma captura de tela do dashboard em funcionamento:
 
 ![Dashboard Streamlit](images/dashboard_streamlit.png)
 
-*Figura 3: Dashboard interativo criado com Streamlit mostrando os principais insights dos dados coletados.*
+*Figura 3: Dashboard interativo criado com Streamlit mostrando os principais insights dos dados coletados.
+
+## 📊 Dicionário de Dados
+
+### Tabela: `notebook`
+
+| Campo | Tipo | Descrição | Analogia |
+|-------|------|-----------|----------|
+| `brand` | TEXT | Marca do notebook | Como o sobrenome de uma pessoa, identifica a "família" do produto |
+| `name` | TEXT | Nome/descrição do produto | Similar à biografia resumida de uma pessoa, contém os detalhes principais |
+| `seller` | TEXT | Nome do vendedor | Como o anfitrião de uma festa, é quem oferece o produto |
+| `reviews_rating_number` | FLOAT | Nota média das avaliações (0-5) | Semelhante à temperatura corporal, indica a "saúde" da reputação do produto |
+| `reviews_amount` | INTEGER | Quantidade de avaliações | Como o número de amigos no Facebook, indica popularidade |
+| `old_money` | FLOAT | Preço original (em R$) | Como o preço de tabela de um carro, é o valor sugerido |
+| `new_money` | FLOAT | Preço atual/promocional (em R$) | Como o preço negociado de um carro, é o valor real de venda |
+| `_source` | TEXT | URL de origem dos dados | Como o endereço residencial, indica de onde o produto veio |
+| `_datetime` | DATETIME | Data e hora da coleta | Como um carimbo de data em uma correspondência, registra quando a informação foi obtida |
 
 ## Estrutura do Projeto
 
