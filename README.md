@@ -5,7 +5,7 @@ Um projeto completo de análise de mercado que coleta, processa e visualiza dado
 ## Problema de Negócio
 
 A Samsung necessita de uma pesquisa de mercado aprofundada na categoria de notebooks para tomar decisões estratégicas, como ela se compara aos concorrentes dentro de MarketPlaces, para esse feito ela decidiu que precisa coletar dados,
-meu papel é realizar uma coleta desses dados nesses sites, neste caso optei pelos dados do MarketPlace do MercadoLivre, como todo projeto, precisamos entender o que o cleinte deseja
+meu papel é realizar uma coleta desses dados nesses sites, neste caso optamos pelos dados do MarketPlace do MercadoLivre, como todo projeto, precisamos entender o que o cleinte deseja
 nesse caso A empresa deseja:
 
 * Realizar uma análise completa da concorrência de notebooks em marketplaces, especificamente no Mercado Livre
@@ -20,7 +20,7 @@ Este projeto é uma solução end-to-end de webscraping, seguindo o formato Extr
 
 ## Processo de Extract (Extração)
 
-Utilizei o framework Scrapy para webscraping. O spider `notebook.py` foi programado para navegar pela página de notebooks do Mercado Livre e extrair informações detalhadas.
+Utilizamos o framework Scrapy para webscraping. O spider `notebook.py` foi programado para navegar pela página de notebooks do Mercado Livre e extrair informações detalhadas.
 
 Um dos maiores desafios foi compreender o padrão de URLs do Mercado Livre. Identifiquei que a navegação seguia um padrão específico:
 - Para a segunda página: `.../notebook_Desde_49_NoIndex_True`
@@ -129,7 +129,7 @@ Esta consulta retornou todos os registros da tabela, permitindo verificar se os 
 
 ### Dashboard com Streamlit
 
-Desenvolvi um dashboard interativo com Streamlit que apresenta:
+Desenvolvemos um dashboard interativo com Streamlit que apresenta:
 - KPIs principais: total de notebooks, marcas únicas e preço médio
 - Gráficos de barras das marcas mais frequentes
 - Análise de preço médio por marca
